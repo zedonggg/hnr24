@@ -1,37 +1,60 @@
+import "./CardGrid.css";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import "./fundraisercards.css";
+import { db } from "./firebase";
+import { getDocs, query, collection } from "firebase/firestore";
+import "./firebase";
+import { useEffect, useState } from "react";
 
-function FacultyCards() {
+function FacCards() {
+    const [contents, setContents] = useState([]);
+
+    const fetchPost = async () => {
+        const q = query(collection(db, "products"));
+        const querySnapshot = await getDocs(q);
+        const fetchedContents = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            if (data.productType === "Faculty") { // Check if productType is "Fundraiser"
+                fetchedContents.push({
+                    id: doc.id,
+                    name: data.name,
+                    description: data.description,
+                    productImages: data.productImages,
+                });
+            }
+        });
+        setContents(fetchedContents);
+    }
+
+    useEffect(() => {
+        fetchPost();
+    }, []);
+
     return (
-      <>
-      <Container className='ml-auto'>
-        <h1>Official Faculty merchandise sales <i class="fa-solid fa-shirt"></i></h1>
-      </Container>
-      <Container className='ml-auto'>
-        <Row xs={1} md={4} className="g-4">
-        {Array.from({ length: 8 }).map((_, idx) => (
-          <Col key={idx}>
-            <Card>
-              {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-              <Card.Body>
-                <Card.Title>Card title</Card.Title>
-                <Card.Text>
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </Card.Text>
-                <Button href="/"></Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-      </Container></>
+        <Container>
+            <br />
+            <Row xs={1} md={4} className="g-4">
+                {contents.map(item => (
+                    <Col key={item.id}>
+                        <Card>
+                            {item.productImages && item.productImages[0] && (
+                                <Card.Img variant="top" src={item.productImages[0]} />
+                            )}
+                            <Card.Body>
+                                <Card.Title>{item.name}</Card.Title>
+                                <Card.Text>{item.description}</Card.Text>
+                                <Button variant="primary" href={`/productpage/${item.id}`}>View Product</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                ))}
+            </Row>
+        </Container>
     );
-  }
+}
 
-export default FacultyCards;
+export default FacCards;

@@ -26,7 +26,6 @@ function CardGrid() {
             });
         });
         setContents(fetchedContents);
-        console.log(contents);
     }
 
     useEffect(() => {
@@ -35,11 +34,11 @@ function CardGrid() {
 
     return (
         <Container>
-            <p>You may also like</p>
+            <br />
             <Row xs={1} md={4} className="g-4">
                 {contents.map(item => (
                     <Col key={item.id}>
-                        <Card className="h-70">
+                        <Card className="cardGrid">
                             {item.productImages && item.productImages[0] && (
                                 <Card.Img variant="top" src={item.productImages[0]} />
                             )}

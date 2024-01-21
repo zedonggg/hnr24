@@ -1,17 +1,17 @@
 import NavBar from "./navbar";
 import Footer from "./footer";
 import SearchBar from "./searchbar";
-import FacCards from "./facultycards";
+import CommCards from "./communitycards";
 
-function Faculty() {
+function Community() {
     return (
         <>
         <NavBar />
         <SearchBar />
-        <FacCards />
+        <CommCards />
         <Footer />
         </>
     )
 }
 
-export default Faculty;
+export default Community;

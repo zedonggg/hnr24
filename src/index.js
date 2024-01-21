@@ -9,7 +9,8 @@ import ErrorPage from './errorpage';
 import SignUp from './SignUp';
 import FundRaiser from './fundraiserpage';
 import ProductPage from './productpage';
-import FacultyPage from './facultypage';
+import Community from './communitypage';
+import Faculty from './facultypage';
 import ProfilePage from './Profile';
 // import { AuthProvider } from './AuthContext';
 
@@ -34,12 +35,16 @@ const router = createBrowserRouter(
       element: <FundRaiser />
     },
     {
-      path: "productpage/:productId",
-      element: <ProductPage />
+      path: "/community",
+      element: <Community />
     },
     {
       path: "/faculty",
-      element: <FacultyPage />
+      element: <Faculty />
+    },
+    {
+      path: "productpage/:productId",
+      element: <ProductPage />
     },
     {
       path: "/profile",

@@ -9,7 +9,7 @@ import { getDocs, query, collection } from "firebase/firestore";
 import "./firebase";
 import { useEffect, useState } from "react";
 
-function FundCards() {
+function CommCards() {
     const [contents, setContents] = useState([]);
 
     const fetchPost = async () => {
@@ -18,7 +18,7 @@ function FundCards() {
         const fetchedContents = [];
         querySnapshot.forEach((doc) => {
             const data = doc.data();
-            if (data.productType === "Fundraiser") { // Check if productType is "Fundraiser"
+            if (data.productType === "Community") { 
                 fetchedContents.push({
                     id: doc.id,
                     name: data.name,
@@ -57,4 +57,4 @@ function FundCards() {
     );
 }
 
-export default FundCards;
+export default CommCards;
