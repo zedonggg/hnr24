@@ -69,6 +69,7 @@ function ProfilePage() {
             <Row className="postsrow">
                 <h3>Your Posts</h3>
             </Row>
+            <Row><a href="/addform"><h3 href="/addform">Click to add a new listing</h3></a></Row>
         </Container>
         <Footer />
         </>) :

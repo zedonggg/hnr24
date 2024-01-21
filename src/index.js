@@ -12,6 +12,7 @@ import ProductPage from './productpage';
 import Community from './communitypage';
 import Faculty from './facultypage';
 import ProfilePage from './Profile';
+import AddForm from './addForm';
 // import { AuthProvider } from './AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -49,6 +50,10 @@ const router = createBrowserRouter(
     {
       path: "/profile",
       element: <ProfilePage />
+    },
+    {
+      path: "/addform",
+      element: <AddForm />
     }
   ]
 )

@@ -1,9 +1,10 @@
-import { Container } from "react-bootstrap";
-import { Form } from "react-bootstrap";
-import Button from "react-bootstrap";
-import Col from "react-bootstrap";
-import Row from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
+// import Button from "react-bootstrap";
+// import Col from "react-bootstrap";
 import { useState } from "react";
+import NavBar from "./navbar";
+import Footer from "./footer";
 
 function AddForm() {
     const [inputs, setInputs] = useState({});
@@ -16,12 +17,15 @@ function AddForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(inputs)
     alert(inputs);
   }
 
     return (
-      <Container>
-        <Form>
+        <>
+        <NavBar />
+      <Container className="adddforms">
+        <Form onSubmit={handleSubmit}>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridName">
           <Form.Label>Name</Form.Label>
@@ -42,23 +46,35 @@ function AddForm() {
 
       <Form.Group className="mb-3" controlId="formGridDescription">
         <Form.Label>Description</Form.Label>
-        <Form.Control placeholder="Provide a brief description of your listing" />
+        <Form.Control type="text" 
+        name="description" 
+        value={inputs.description || ""} 
+        onChange={handleChange}placeholder="Provide a brief description of your listing" />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formGridLocDetails">
         <Form.Label>Meetup Details</Form.Label>
-        <Form.Control placeholder="Provide detailed meetup locations including dates of sales" />
+        <Form.Control type="text" 
+        name="meetdetail" 
+        value={inputs.meetdetail || ""} 
+        onChange={handleChange}placeholder="Provide detailed meetup locations including dates of sales" />
       </Form.Group>
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridImg">
           <Form.Label>Please provide a link to promotional images</Form.Label>
-          <Form.Control />
+          <Form.Control type="text" 
+        name="imglink" 
+        value={inputs.imglink || ""} 
+        onChange={handleChange}/>
         </Form.Group>
         
         <Form.Group as={Col} controlId="formGridPrice">
           <Form.Label>Prices starting from</Form.Label>
-          <Form.Control />
+          <Form.Control type="text" 
+        name="prices" 
+        value={inputs.prices || ""} 
+        onChange={handleChange}/>
         </Form.Group>
       </Row>
 
@@ -67,6 +83,8 @@ function AddForm() {
       </Button>
     </Form>
       </Container>
+      <Footer />
+      </>
     );
   }
   
