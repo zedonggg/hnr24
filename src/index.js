@@ -6,6 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import LoginForm from './login';
 import HomePage from './home';
 import ErrorPage from './errorpage';
+import SignUp from './SignUp';
+import FundRaiser from './fundraiserpage';
+import ProductPage from './productpage';
+import FacultyPage from './facultypage';
+import ProfilePage from './Profile';
+// import { AuthProvider } from './AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const router = createBrowserRouter(
@@ -16,8 +22,28 @@ const router = createBrowserRouter(
       errorElement: <ErrorPage />
     },
     {
+      path: "/signup",
+      element: <SignUp />
+    },
+    {
       path: "/signin",
       element: <LoginForm />
+    },
+    {
+      path: "/fundraiser",
+      element: <FundRaiser />
+    },
+    {
+      path: "productpage/:productId",
+      element: <ProductPage />
+    },
+    {
+      path: "/faculty",
+      element: <FacultyPage />
+    },
+    {
+      path: "/profile",
+      element: <ProfilePage />
     }
   ]
 )

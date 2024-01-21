@@ -1,5 +1,6 @@
 .carouimg {
-    min-height: 600px;
+    max-height: 500px;
+    min-height: 500px;
     background-color: rgb(214, 214, 214);
 }
 

@@ -6,7 +6,7 @@ import "./searchbar.css"
 
 function SearchBar() {
   return (
-    <Container>
+    <Container className='searchbar'>
       <InputGroup className="mb-3">
         <Form.Control
             className='fa'
