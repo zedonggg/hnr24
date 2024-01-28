@@ -10,6 +10,7 @@ function AddForm() {
     const [inputs, setInputs] = useState({});
 
   const handleChange = (event) => {
+    event.preventDefault();
     const name = event.target.name;
     const value = event.target.value;
     setInputs(values => ({...values, [name]: value}))
