@@ -1,17 +1,14 @@
-/* Add the border to the active list group item */
+
 .list-group-item.active {
     background-color: white !important;
     border-radius: 0 !important;
     border: 1px solid #003060 !important;
 }
 
-/* Style the non-active list group items */
 .list-group-item {
     gap: 10px !important;
     border: 1px solid white !important;
 }
-
-/* Style the list group container */
 .list-group {
     gap: 10px !important;
     border-radius: 0 !important;
